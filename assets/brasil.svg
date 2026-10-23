@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" width="72" height="72">
+  <defs>
+    <clipPath id="circleClip">
+      <circle cx="36" cy="36" r="34" />
+    </clipPath>
+    <filter id="flagShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.15" />
+    </filter>
+  </defs>
+  <!-- Border / background ring -->
+  <circle cx="36" cy="36" r="35" fill="#e2e8f0" />
+  <g clip-path="url(#circleClip)">
+    <!-- Fundo Verde -->
+    <rect width="72" height="72" fill="#009c3b" />
+    <!-- Losango Amarelo -->
+    <polygon points="36,12 64,36 36,60 8,36" fill="#ffdf00" />
+    <!-- Círculo Azul -->
+    <circle cx="36" cy="36" r="14.5" fill="#002776" />
+    <!-- Faixa Branca -->
+    <path d="M 22.5,38.5 C 27,33.5 45,33.5 49.5,41 C 48.5,43 23.5,40.5 22.5,38.5 Z" fill="#ffffff" />
+    <!-- Estrelas estilizadas -->
+    <circle cx="36" cy="30" r="0.9" fill="#ffffff" />
+    <circle cx="32" cy="43" r="0.8" fill="#ffffff" />
+    <circle cx="35" cy="44" r="0.8" fill="#ffffff" />
+    <circle cx="39" cy="43" r="0.8" fill="#ffffff" />
+    <circle cx="41" cy="42" r="0.7" fill="#ffffff" />
+  </g>
+  <circle cx="36" cy="36" r="34" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" />
+</svg>

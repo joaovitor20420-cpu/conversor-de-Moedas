@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="40" height="40" fill="none">
+  <!-- Outer subtle ring with hairline border -->
+  <circle cx="22" cy="22" r="20" fill="#f5f0fb" stroke="#e6dcf5" stroke-width="1.2" />
+  <circle cx="22" cy="22" r="15" fill="#ffffff" stroke="#ede5f8" stroke-width="1" />
+  <!-- Crisp, refined downward arrow with kinetic balance -->
+  <path d="M22 14V28M22 28L16.5 22.5M22 28L27.5 22.5" stroke="#7b2cbf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

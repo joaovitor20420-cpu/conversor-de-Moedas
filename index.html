@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>CurrencyX | Conversor de Moedas em Tempo Real</title>
+  
+  <!-- Tipografia de Alto Padrão: Plus Jakarta Sans (Sem fontes genéricas banidas) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Folha de Estilos Principal -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Light Mesh (Atmosfera Ethereal Violet/OLED) -->
+  <div class="ambient-mesh" aria-hidden="true">
+    <div class="mesh-orb orb-primary"></div>
+    <div class="mesh-orb orb-secondary"></div>
+    <div class="mesh-grain"></div>
+  </div>
+
+  <!-- Container Principal com Respiração Macro e Alinhamento Preciso -->
+  <main class="viewport-stage">
+
+    <!-- 1. Header com Logotipo Centralizado de Alta Precisão -->
+    <header class="brand-header">
+      <img src="assets/logo.svg" alt="Logotipo CurrencyX Câmbio Inteligente" class="brand-logo" id="app-logo">
+    </header>
+
+    <!-- 2. Tela de Celular: Arquitetura Double-Bezel (Chassi Usinado + Núcleo Concêntrico) -->
+    <div class="device-shell">
+      <div class="device-bezel">
+        
+        <!-- Hardware superior: Notch Dinâmico & Sensores -->
+        <div class="device-island">
+          <div class="island-camera"></div>
+          <div class="island-speaker"></div>
+        </div>
+
+        <!-- Tela Interna do Smartphone -->
+        <div class="device-screen">
+          
+          <form class="converter-flow" onsubmit="return false;">
+            
+            <!-- Campo 1: Converter de -->
+            <div class="input-field">
+              <label for="currency-select-from" class="field-label">
+                Converter <span class="label-accent">de</span>
+              </label>
+              <div class="select-enclosure">
+                <select id="currency-select-from" class="native-select select-disabled" disabled>
+                  <option value="real" selected>R$ Real brasileiro</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Campo 2: Converter para (Seleção de Moeda) -->
+            <div class="input-field">
+              <label for="currency-select" class="field-label">
+                Converter <span class="label-accent">para</span>
+              </label>
+              <div class="select-enclosure select-interactive">
+                <select id="currency-select" class="native-select">
+                  <option value="dolar">US$ Dólar americano</option>
+                  <option value="euro">€ Euro</option>
+                </select>
+                <div class="select-chevron" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Campo 3: Valor a Converter -->
+            <div class="input-field">
+              <label for="input-currency-value" class="field-label">Valor</label>
+              <div class="value-enclosure">
+                <span class="currency-tag">R$</span>
+                <input 
+                  type="number" 
+                  id="input-currency-value" 
+                  class="native-input" 
+                  placeholder="10.000,00" 
+                  step="any" 
+                  min="0"
+                  required
+                >
+              </div>
+            </div>
+
+            <!-- Botão Converter: Padrão "Button-in-Button" com Física Cinética -->
+            <button type="button" id="convert-button" class="btn-convert" aria-label="Converter valor da moeda">
+              <span class="btn-caption">Converter</span>
+              <span class="btn-icon-bubble" aria-hidden="true">
+                <svg class="btn-arrow" viewBox="0 0 18 18" fill="none">
+                  <path d="M3.5 9H14.5M10 4.5L14.5 9L10 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+
+          </form>
+
+          <!-- 3. Quadro de Resultados: Arquitetura Doppelrand (Duplo Enclosure) -->
+          <section class="result-enclosure" id="conversion-result-card" aria-live="polite">
+            <div class="result-card">
+              
+              <!-- Moeda de Origem (Real Brasileiro) -->
+              <div class="currency-row currency-from">
+                <div class="flag-avatar">
+                  <img src="assets/brasil.svg" alt="Bandeira do Brasil" class="flag-media" id="currency-img-from">
+                </div>
+                <div class="currency-meta">
+                  <span class="currency-title">Real</span>
+                  <p class="currency-amount" id="currency-value-to-convert">R$ 0,00</p>
+                </div>
+              </div>
+
+              <!-- Seta Divisora de Conversão com Micro-Interação -->
+              <div class="conversion-junction">
+                <div class="junction-track" aria-hidden="true"></div>
+                <div class="junction-badge">
+                  <img src="assets/arrow.svg" alt="Indicador de conversão" class="junction-icon" id="arrow-icon">
+                </div>
+              </div>
+
+              <!-- Moeda de Destino (Dólar Americano ou Euro) -->
+              <div class="currency-row currency-to">
+                <div class="flag-avatar">
+                  <img src="assets/estados-unidos.svg" alt="Bandeira da moeda destino" class="flag-media" id="currency-img">
+                </div>
+                <div class="currency-meta">
+                  <span class="currency-title" id="currency-name">Dólar Americano</span>
+                  <p class="currency-amount currency-amount-highlight" id="currency-value">US$ 0.00</p>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Indicador Home do Smartphone -->
+        <div class="device-home-bar" aria-hidden="true"></div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Lógica JavaScript (desenvolva na mão seus scripts aqui) -->
+  <script src="scripts.js"></script>
+</body>
+</html>

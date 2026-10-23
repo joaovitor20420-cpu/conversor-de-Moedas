@@ -1,0 +1,669 @@
+/* ==========================================================
+   TASTE-SKILL DESIGN SYSTEM & VISUAL ARCHITECTURE
+   Awwwards-Tier Engineering • Ethereal Violet/OLED Aesthetic
+   ========================================================== */
+
+:root {
+  /* --- PALETA CROMÁTICA CALIBRADA (The Lila Rule Executada com Maestria) --- */
+  --surface-void: #090112;
+  --surface-deep: #120324;
+  --surface-ambient: #1e053a;
+  
+  --brand-violet-600: #6a1bb5;
+  --brand-violet-500: #7b2cbf;
+  --brand-violet-400: #9d4edd;
+  --brand-violet-300: #c77dff;
+  --brand-violet-200: #e0aaff;
+  --brand-violet-50:  #faf7ff;
+
+  /* --- DOUBLE-BEZEL & SUPERFÍCIES --- */
+  --chassis-outer: #0a0114;
+  --chassis-border: rgba(255, 255, 255, 0.12);
+  --chassis-highlight: rgba(255, 255, 255, 0.08);
+
+  --screen-bg: #ffffff;
+  --screen-border: rgba(0, 0, 0, 0.06);
+  
+  --enclosure-bg: rgba(123, 44, 191, 0.035);
+  --enclosure-border: rgba(123, 44, 191, 0.12);
+  --card-inner-bg: #ffffff;
+
+  /* --- TIPOGRAFIA & CONTRASTE WCAG AAA --- */
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --text-pure: #12091f;
+  --text-muted: #665c75;
+  --text-subtle: #988fa7;
+  --text-inverse: #ffffff;
+
+  /* --- INPUTS & CONTROLES TÁTEIS --- */
+  --field-bg: #f8fafc;
+  --field-border: #e2e8f0;
+  --field-focus-ring: rgba(123, 44, 191, 0.16);
+
+  /* --- SOMBRAS AMBIENTAIS MATIZADAS (Sem Sombras Pretas Genéricas) --- */
+  --shadow-device: 
+    0 35px 80px -20px rgba(0, 0, 0, 0.85),
+    0 0 70px rgba(123, 44, 191, 0.32),
+    inset 0 1px 1px rgba(255, 255, 255, 0.22);
+  
+  --shadow-cta: 
+    0 12px 30px -4px rgba(123, 44, 191, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.25);
+    
+  --shadow-cta-hover: 
+    0 18px 36px -4px rgba(123, 44, 191, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35);
+
+  --shadow-flag: 
+    0 4px 16px rgba(18, 9, 31, 0.12),
+    0 1px 3px rgba(18, 9, 31, 0.08);
+
+  /* --- CINÉTICA & CURVAS SPRING (Sem Linear / Ease Genéricos) --- */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-press: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-fluid: 450ms;
+  --duration-tactile: 180ms;
+}
+
+/* ==========================================================
+   RESET & SETUP DE ALTA PRECISÃO
+   ========================================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-display);
+  background-color: var(--surface-void);
+  color: var(--text-pure);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 56px 20px;
+  background-color: var(--surface-void);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ==========================================================
+   ATMOSFERA ETHEREAL (Gradientes Matizados + Noise Sutil)
+   ========================================================== */
+.ambient-mesh {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.mesh-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.orb-primary {
+  width: 550px;
+  height: 400px;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(157, 78, 221, 0.28) 0%, rgba(106, 27, 181, 0.1) 60%, transparent 80%);
+}
+
+.orb-secondary {
+  width: 480px;
+  height: 480px;
+  bottom: -160px;
+  right: 5%;
+  background: radial-gradient(circle, rgba(90, 24, 154, 0.35) 0%, transparent 70%);
+}
+
+.mesh-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: radial-gradient(#ffffff 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ==========================================================
+   PALCO PRINCIPAL & ENTRADA COREOGRAFADA
+   ========================================================== */
+.viewport-stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  animation: stageEntrance 0.8s var(--ease-spring) backwards;
+}
+
+@keyframes stageEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ==========================================================
+   1. BRAND HEADER (Logotipo de Alta Precisão)
+   ========================================================== */
+.brand-header {
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand-logo {
+  height: 58px;
+  width: auto;
+  max-width: 290px;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
+  transition: transform var(--duration-fluid) var(--ease-spring);
+}
+
+.brand-logo:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* ==========================================================
+   2. TELA DE CELULAR: ARQUITETURA DOUBLE-BEZEL (Doppelrand)
+   ========================================================== */
+.device-shell {
+  width: 100%;
+  max-width: 398px;
+  border-radius: 50px;
+  padding: 8px; /* Anel externo usinado */
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(255, 255, 255, 0.08) 100%), var(--chassis-outer);
+  box-shadow: var(--shadow-device);
+  position: relative;
+  transition: transform var(--duration-fluid) var(--ease-spring), box-shadow var(--duration-fluid) var(--ease-spring);
+}
+
+.device-shell:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 42px 90px -20px rgba(0, 0, 0, 0.9),
+    0 0 85px rgba(123, 44, 191, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.28);
+}
+
+.device-bezel {
+  background: var(--chassis-outer);
+  border-radius: 44px;
+  padding: 10px 10px 14px 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Dynamic Island & Hardware Sensor Array */
+.device-island {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 22px;
+  margin-bottom: 8px;
+}
+
+.island-camera {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #190a2a;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.island-speaker {
+  width: 52px;
+  height: 4.5px;
+  border-radius: 10px;
+  background: #170728;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* Núcleo Concêntrico da Tela */
+.device-screen {
+  background: var(--screen-bg);
+  border-radius: 34px;
+  padding: 26px 20px 28px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 
+    inset 0 0 0 1px rgba(0, 0, 0, 0.04),
+    0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+/* Barra Home Inferior */
+.device-home-bar {
+  width: 124px;
+  height: 4.5px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.32);
+  margin: 12px auto 2px;
+  transition: background var(--duration-tactile) ease;
+}
+
+.device-shell:hover .device-home-bar {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* ==========================================================
+   FORMULÁRIO & CONTROLES TÁTEIS
+   ========================================================== */
+.converter-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: -0.15px;
+}
+
+.label-accent {
+  font-weight: 700;
+  color: var(--brand-violet-500);
+}
+
+/* Enclosure dos Selects */
+.select-enclosure {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 14px;
+  transition: border-color var(--duration-tactile) ease, box-shadow var(--duration-tactile) ease;
+}
+
+.native-select {
+  width: 100%;
+  height: 48px;
+  padding: 0 42px 0 16px;
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text-pure);
+  background: var(--field-bg);
+  border: 1.5px solid var(--field-border);
+  border-radius: 14px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: all var(--duration-tactile) ease;
+}
+
+.select-disabled {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #475569;
+  cursor: default;
+}
+
+.select-interactive .native-select:hover {
+  border-color: #cbd5e1;
+  background: #ffffff;
+}
+
+.select-interactive .native-select:focus {
+  border-color: var(--brand-violet-500);
+  background: #ffffff;
+  box-shadow: 0 0 0 3.5px var(--field-focus-ring);
+}
+
+.select-chevron {
+  position: absolute;
+  right: 14px;
+  width: 16px;
+  height: 16px;
+  color: var(--brand-violet-500);
+  pointer-events: none;
+  transition: transform var(--duration-tactile) ease;
+}
+
+.select-interactive:hover .select-chevron {
+  transform: translateY(1px);
+}
+
+/* Enclosure do Input de Valor */
+.value-enclosure {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-tag {
+  position: absolute;
+  left: 16px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--brand-violet-500);
+  pointer-events: none;
+}
+
+.native-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px 0 46px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-pure);
+  background: var(--field-bg);
+  border: 1.5px solid var(--field-border);
+  border-radius: 14px;
+  outline: none;
+  transition: all var(--duration-tactile) ease;
+}
+
+.native-input::placeholder {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.native-input:hover {
+  border-color: #cbd5e1;
+  background: #ffffff;
+}
+
+.native-input:focus {
+  border-color: var(--brand-violet-500);
+  background: #ffffff;
+  box-shadow: 0 0 0 3.5px var(--field-focus-ring);
+}
+
+/* Remove botões nativos de número */
+.native-input::-webkit-outer-spin-button,
+.native-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.native-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* ==========================================================
+   BUTTON-IN-BUTTON TRAILING ICON ARCHITECTURE (Awwwards-Tier)
+   ========================================================== */
+.btn-convert {
+  margin-top: 6px;
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--brand-violet-500) 0%, var(--brand-violet-400) 100%);
+  color: var(--text-inverse);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px 6px 24px;
+  box-shadow: var(--shadow-cta);
+  position: relative;
+  overflow: hidden;
+  transition: 
+    transform var(--duration-tactile) var(--ease-press),
+    box-shadow var(--duration-tactile) ease,
+    background var(--duration-tactile) ease;
+}
+
+.btn-caption {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* Nested Trailing Icon Bubble */
+.btn-icon-bubble {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: transform var(--duration-fluid) var(--ease-spring), background var(--duration-tactile) ease;
+}
+
+.btn-arrow {
+  width: 18px;
+  height: 18px;
+  stroke: #ffffff;
+}
+
+/* Hover Physics */
+.btn-convert:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-cta-hover);
+  background: linear-gradient(135deg, #8338ec 0%, #a855f7 100%);
+}
+
+.btn-convert:hover .btn-icon-bubble {
+  transform: translateX(2px) scale(1.05);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* Active Push Feedback */
+.btn-convert:active {
+  transform: translateY(1px) scale(0.985);
+  box-shadow: 0 6px 18px rgba(123, 44, 191, 0.4);
+}
+
+/* ==========================================================
+   3. QUADRO DE RESULTADOS: ARQUITETURA DOPPELRAND
+   ========================================================== */
+.result-enclosure {
+  margin-top: 22px;
+  border-radius: 24px;
+  padding: 4px;
+  background: var(--enclosure-bg);
+  border: 1.5px solid var(--enclosure-border);
+  transition: border-color var(--duration-tactile) ease;
+}
+
+.result-enclosure:hover {
+  border-color: rgba(123, 44, 191, 0.22);
+}
+
+.result-card {
+  background: var(--card-inner-bg);
+  border-radius: 20px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 4px 18px rgba(123, 44, 191, 0.04);
+}
+
+/* Linha da Moeda */
+.currency-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Flag Avatar com Borda Concêntrica */
+.flag-avatar {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-flag);
+  transition: transform var(--duration-fluid) var(--ease-spring);
+}
+
+.currency-row:hover .flag-avatar {
+  transform: scale(1.05);
+}
+
+.flag-media {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Textos e Valores */
+.currency-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.currency-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+.currency-amount {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-pure);
+  letter-spacing: -0.3px;
+  margin-top: 2px;
+}
+
+/* Destaque da Moeda Convertida */
+.currency-amount-highlight {
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--brand-violet-500);
+}
+
+/* Junção de Conversão & Seta */
+.conversion-junction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: -4px 0;
+}
+
+.junction-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(123, 44, 191, 0.12), transparent);
+}
+
+.junction-badge {
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-fluid) var(--ease-spring);
+}
+
+.junction-icon {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 2px 6px rgba(123, 44, 191, 0.15));
+}
+
+.result-card:hover .junction-badge {
+  transform: translateY(2px);
+}
+
+/* ==========================================================
+   RESPONSIVIDADE & MOBILE COLLAPSE
+   ========================================================== */
+@media (max-width: 440px) {
+  body {
+    padding: 28px 12px;
+  }
+
+  .brand-header {
+    margin-bottom: 20px;
+  }
+
+  .brand-logo {
+    height: 48px;
+  }
+
+  .device-shell {
+    max-width: 100%;
+    border-radius: 40px;
+    padding: 6px;
+  }
+
+  .device-bezel {
+    border-radius: 34px;
+    padding: 8px 8px 12px 8px;
+  }
+
+  .device-screen {
+    border-radius: 28px;
+    padding: 20px 14px 22px 14px;
+  }
+
+  .currency-amount {
+    font-size: 16.5px;
+  }
+
+  .currency-amount-highlight {
+    font-size: 19px;
+  }
+
+  .flag-avatar,
+  .flag-media {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Respeito Rigoroso a prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
