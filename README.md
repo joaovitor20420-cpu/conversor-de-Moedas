@@ -78,7 +78,7 @@ Conversor de moedas/
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/SEU-USUARIO/NOME-DO-REPOSITORIO.git
+   git clone https://github.com/joaovitor20420-cpu/conversor-de-Moedas.git
    ```
 
 2. **Acesse a pasta do projeto:**
