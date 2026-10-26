@@ -5,6 +5,10 @@ function convertValues() {
     const input = document.querySelector("#input-currency-value").value
     const dolarToday = 5.30
     const euroToday = 5.70
+    const bitcoinToday=300_000.00
+    const libraToday = 6.40
+    
+
     const select = document.querySelector("#currency-select").value
     const valueToConvert = document.getElementById("currency-value-to-convert")
     let convertedValue
@@ -34,4 +38,20 @@ function convertValues() {
 
 }
 
+const selector = document.getElementById('currency-select')
+const currencyName = document.getElementById('currency-name')
+const currencyImg = document.getElementById('currency-img')
+
+function changeCurrency() {
+    if(selector.value === 'dolar'){
+        currencyName.textContent = "Dólar"
+        currencyImg.src = "./assets/estados-unidos.svg"
+
+    }else{
+        currencyName.textContent ='Euro'
+        currencyImg.src="./assets/euro.svg"
+    }
+}
+
+selector.addEventListener('change', changeCurrency)
 convertButton.addEventListener("click", convertValues)

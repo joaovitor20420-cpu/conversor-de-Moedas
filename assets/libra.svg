@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" width="72" height="72">
+  <defs>
+    <clipPath id="ukCircleClip">
+      <circle cx="36" cy="36" r="34" />
+    </clipPath>
+  </defs>
+  <!-- Borda externa para acabamento -->
+  <circle cx="36" cy="36" r="35" fill="#e2e8f0" />
+  <g clip-path="url(#ukCircleClip)">
+    <!-- Fundo Azul Real da Union Jack -->
+    <rect width="72" height="72" fill="#012169" />
+    
+    <!-- Cruz diagonal de Santo André (Branca) -->
+    <path d="M-5 -5 L77 77 M77 -5 L-5 77" stroke="#ffffff" stroke-width="12" stroke-linecap="square" />
+    
+    <!-- Cruz diagonal de São Patrício (Vermelha) -->
+    <!-- Quatro quadrantes alternados da Union Jack -->
+    <path d="M-5 -5 L36 36" stroke="#c8102e" stroke-width="4" transform="translate(-1.8, 1.8)" />
+    <path d="M77 77 L36 36" stroke="#c8102e" stroke-width="4" transform="translate(1.8, -1.8)" />
+    <path d="M77 -5 L36 36" stroke="#c8102e" stroke-width="4" transform="translate(1.8, 1.8)" />
+    <path d="M-5 77 L36 36" stroke="#c8102e" stroke-width="4" transform="translate(-1.8, -1.8)" />
+
+    <!-- Cruz de São Jorge (Fundo Branco largo) -->
+    <path d="M36 -5 V77 M-5 36 H77" stroke="#ffffff" stroke-width="16" />
+
+    <!-- Cruz de São Jorge (Cruz Vermelha central) -->
+    <path d="M36 -5 V77 M-5 36 H77" stroke="#c8102e" stroke-width="9.6" />
+  </g>
+  <!-- Anel de destaque reflexivo sutil -->
+  <circle cx="36" cy="36" r="34" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" />
+</svg>
